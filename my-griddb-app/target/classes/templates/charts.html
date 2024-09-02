@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Charts</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: 20px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    canvas {
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+      max-height: 500px;
+      /* Limit maximum height */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Service Ticket Dashboard</h1>
+    <canvas id="myChart"></canvas>
+  </div>
+
+  <!-- JavaScript to render the Chart.js chart -->
+  <script th:inline="javascript">
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+      type: 'bar', // Type of chart
+      data: {
+        labels: /*[[${chartData.labels}]]*/, // Data labels
+        datasets: [{
+          label: 'Ticket Resolution Time (in hour)',
+          data: /*[[${chartData.values}]]*/, // Data values
+          backgroundColor: 'rgba(54, 162, 235, 0.2)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              color: '#333',
+              font: {
+                size: 14
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
