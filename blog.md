@@ -637,7 +637,7 @@ mvn clean install && mvn spring-boot:run
 
 ### Accessing the Dashboard
 
-Once your application is up and running, open a web browser and navigate to `http://localhost:9090`. This URL will display our Thymeleaf-based dashboard, where we can view charts visualizing average ticket resolution times over time.
+Once your application is up and running, open a web browser and navigate to `http://localhost:9090/charts`. This URL will display our Thymeleaf-based dashboard, where we can view charts visualizing average ticket resolution times over time.
 
 ![](./img/chart.png)
 
