@@ -51,7 +51,7 @@ public class MetricsCollectionService {
       try {
         TimeSeries<ServiceTicket> ts = store.putTimeSeries("serviceTickets",
             ServiceTicket.class);
-        // ts.put(salesforceData);
+        ts.put(salesforceData);
       } catch (GSException e) {
         e.printStackTrace();
       }
